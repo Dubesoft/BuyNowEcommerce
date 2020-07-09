@@ -1,0 +1,79 @@
+﻿@model BuyNowEcommerce.Models.ViewModels.ServiceVm
+@using BuyNowEcommerce.Extensions
+
+<div class="box box-info">
+    <div class="modal-header no-padding">
+        <div class="table-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="white">&times;</span>
+            </button>
+            Delete Service
+        </div>
+    </div>
+
+    <div class="modal-body no-padding">
+        <br />
+        <br />
+        <form class="form-horizontal" role="form" asp-action="Delete" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="form-field-1" placeholder="" class="form-control" asp-for="Services.Id" style="width: 470px;"/>
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Category </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <select id="ddlCategorylist" asp-for="Services.CategoryId" asp-items="Model.CategoryList.ToSelectListItem(Model.Services.CategoryId)" class="form-control"></select>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Name </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="text" id="form-field-1" placeholder="" class="form-control" asp-for="Services.Name" style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Description </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="text" id="form-field-1" placeholder="" class="col-lg-12 col-sm-7" asp-for="Services.Description" style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Image </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="file" id="form-field-1" placeholder="" name="files" class="col-lg-12 col-sm-7" multiple style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Price </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="text" id="form-field-1" placeholder="" class="col-lg-12 col-sm-7" asp-for="Services.Price" style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer no-margin-top">
+                <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+                    <i class="ace-icon fa fa-times"></i>
+                    Close
+                </button>
+                <button class="btn btn-info pull-right" type="submit" name="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

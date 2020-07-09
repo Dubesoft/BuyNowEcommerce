@@ -1,0 +1,52 @@
+﻿@model Category
+
+<div class="box box-info">
+    <div class="modal-header no-padding">
+        <div class="table-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="white">&times;</span>
+            </button>
+            Delete Category
+        </div>
+    </div>
+
+    <div class="modal-body no-padding">
+        <br />
+        <br />
+        <form class="form-horizontal" role="form" asp-action="Delete" method="post">
+            <input type="hidden" class="form-control" asp-for="Id" />
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Name </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="text" id="form-field-1" placeholder="" class="form-control" asp-for="Name" style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Description </label>
+                    <div class="col-sm-10">
+                        <span class="input-icon input-icon-right">
+                            <input type="text" id="form-field-1" placeholder="" class="col-lg-12 col-sm-7" asp-for="Description" style="width: 470px;" readonly/>
+                            <i class="ace-icon fa fa-leaf blue"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer no-margin-top">
+                <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+                    <i class="ace-icon fa fa-times"></i>
+                    Close
+                </button>
+                <button class="btn btn-info pull-right" type="submit" name="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
