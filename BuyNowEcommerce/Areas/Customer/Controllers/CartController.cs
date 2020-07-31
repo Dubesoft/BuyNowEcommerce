@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BuyNowEcommerce.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class CartController : Controller
     {
         private readonly ILogger<CartController> _logger;
@@ -75,6 +76,7 @@ namespace BuyNowEcommerce.Areas.Customer.Controllers
             return View(detailCart);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Summary(string stripeToken)
         {
             var user = await _userManager.GetUserAsync(User);

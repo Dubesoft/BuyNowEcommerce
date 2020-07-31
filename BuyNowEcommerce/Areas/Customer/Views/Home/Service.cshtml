@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Services>
+
+@{
+    ViewData["Title"] = "Service";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Venedor - Responsive eCommerce Template</title>
+    <meta name="description" content="Responsive modern ecommerce Html5 Template">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic%7CPT+Gudea:400,700,400italic%7CPT+Oswald:400,700,300' rel='stylesheet' id="googlefont">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/prettyPhoto.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+
+    <!-- Favicon and Apple Icons -->
+    <link rel="icon" type="image/png" href="~/images/icons/icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/icons/apple-icon-72x72.png">
+
+    <!--- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <style id="custom-style">
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <partial name="_CustomerHeader" /><!-- End #header -->
+
+        <section id="content">
+            <div id="breadcrumb-container">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Services</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="content-title">
+                            <h1 class="title">Services</h1>
+                            <p class="title-desc">Check out all the kinds of services we offer.</p>
+                        </header>
+                        <div id="quick-access">
+                            <form class="form-inline quick-search-form" role="form" asp-controller="Home" asp-action="Search" method="get">
+                                <div class="form-group">
+                                    <input type="text" name="value" class="form-control" placeholder="Search here">
+                                </div><!-- End .form-inline -->
+                                <button type="submit" id="quick-search" class="btn btn-custom"></button>
+                            </form>
+                        </div>
+                        <br /><br />
+                        <div class="btn-group btn-group-justified">
+                            <a asp-controller="Home" asp-action="Service" class="btn btn-info btn-lg" role="button">All</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Cook" class="btn btn-info btn-lg" role="button">Cook</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Cleaning" class="btn btn-info btn-lg" role="button">Cleaning</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Electrician" class="btn btn-info btn-lg" role="button">Electrician</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Plumber" class="btn btn-info btn-lg" role="button">Plumber</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Mechanic" class="btn btn-info btn-lg" role="button">Mechanic</a>
+                            <a asp-controller="Home" asp-action="Search" asp-route-value="Driver" class="btn btn-info btn-lg" role="button">Driver</a>
+                        </div><!-- End .btn-group -->
+                        <br />
+
+                        @if (Model.Count() > 0)
+                        {
+                            <div class="row portfolio-item-container" data-maxcolumn="3" data-layoutmode="fitRows">
+                                @foreach (var service in Model)
+                                {
+                                    <div class="col-md-4 col-sm-4 col-xs-6 portfolio-item photography">
+                                        <div class="card m-3">
+                                            <div class="card-header">
+                                                <h3 class="card-title"></h3> 
+                                            </div>
+                                            <div class="card-body">
+                                                @if (service.Picture != null)
+                                                {
+                                                    var base64 = Convert.ToBase64String(service.Picture);
+                                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                                    <img class="card-img-top" src="@imgsrc" alt="Service Image" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="card-img-top" src="~/images/portfolio/classic/portfolio2.jpg" alt="Service Image" />
+                                                }
+
+                                                <p class="card-title"><h4 class="text-bold text-danger text-center">@service.Name</h4></p>
+                                                <p class="card-text"><h5 class="text-center">@service.Description</h5></p>
+                                            </div>
+                                            <div class="card-footer"></div>
+                                            <a asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-info col-md-offset-3"><i class="fa fa-eye">View</i></a>
+                                            <a class="btn btn-danger col-md-offset-1"><i class="fa fa-star">Rate</i></a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p>No Services Exist..</p>
+                        }
+                        <div class="pagination-container clear-border clearfix">
+
+                            <div class="pull-right">
+                                <ul class="pagination">
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div><!-- End .pull-right -->
+                        </div><!-- End pagination-container -->
+
+
+                    </div><!-- End .col-md-12 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </section><!-- End #content -->
+
+        <partial name="_CustomerFooter" /><!-- End #footer -->
+    </div><!-- End #wrapper -->
+
+    <a href="#" id="scroll-top" title="Scroll to Top"><i class="fa fa-angle-up"></i></a><!-- End #scroll-top -->
+    <!-- END -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/smoothscroll.js"></script>
+    <script src="~/js/jquery.debouncedresize.js"></script>
+    <script src="~/js/retina.min.js"></script>
+    <script src="~/js/jquery.placeholder.js"></script>
+    <script src="~/js/jquery.hoverIntent.min.js"></script>
+    <script src="~/js/twitter/jquery.tweet.min.js"></script>
+    <script src="~/js/jquery.flexslider-min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jflickrfeed.min.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/imagesloaded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+</body>
+</html>

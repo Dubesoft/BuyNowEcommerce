@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BuyNowEcommerce.Data;
+using BuyNowEcommerce.Interfaces;
 using BuyNowEcommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,15 +13,16 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        public readonly ApplicationDbContext _db;
 
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository categoryRepository;
+
+        public CategoryController(ICategoryRepository categoryRepository)
         {
-            _db = db;
+            this.categoryRepository = categoryRepository;
         }
         public  async Task<IActionResult> Index()
         {
-            return View(await _db.Category.ToListAsync());
+            return View(await categoryRepository.GetCategory());
         }
 
         [HttpGet]
@@ -35,8 +37,7 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                _db.Category.Add(category);
-                await _db.SaveChangesAsync();
+                await categoryRepository.Create(category);
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -49,7 +50,7 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var category = await _db.Category.FindAsync(id);
+            var category = await categoryRepository.Detail(id);
 
             if(category == null)
             {
@@ -69,8 +70,7 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
 
             if(ModelState.IsValid)
             {
-                _db.Update(category);
-                await _db.SaveChangesAsync();
+                await categoryRepository.Edit(category);
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -80,11 +80,7 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var category = await _db.Category.FindAsync(id);
+            var category = await categoryRepository.Detail(id);
 
             if (category == null)
             {
@@ -97,14 +93,9 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Category category)
         {
-            if(category == null)
-            {
-                throw new ArgumentNullException(nameof(category));
-            }
             if(ModelState.IsValid)
             {
-                _db.Category.Remove(category);
-                await _db.SaveChangesAsync();
+                await categoryRepository.Delete(category);
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -118,7 +109,7 @@ namespace BuyNowEcommerce.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var category = await _db.Category.FindAsync(id);
+            var category = await categoryRepository.Detail(id);
 
             if (category == null)
             {

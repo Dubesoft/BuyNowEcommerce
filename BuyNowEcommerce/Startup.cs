@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BuyNowEcommerce.Models;
+using BuyNowEcommerce.Interfaces;
+using BuyNowEcommerce.Repository;
 
 namespace BuyNowEcommerce
 {
@@ -33,6 +35,8 @@ namespace BuyNowEcommerce
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddDistributedMemoryCache();
 

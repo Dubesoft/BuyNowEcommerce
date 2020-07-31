@@ -1,0 +1,29 @@
+﻿@model Comments
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Comment</h3>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" asp-area="Admin" asp-controller="Post" asp-action="Create" method="post" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" asp-for="@user.Id" />
+        <div class="box-body">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Make New Comment</label>
+                <div class="col-sm-10">
+                    <textarea rows="4" cols="100" class="form-control" placeholder="Make your comment..." style="resize: none;" asp-for="Comment"></textarea>
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-info pull-right">Post</button>
+        </div><!-- /.box-footer -->
+    </form>
+</div><!-- /.box -->

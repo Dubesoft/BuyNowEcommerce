@@ -225,7 +225,7 @@
                                 </table>
                                 <div class="md-margin"></div><!-- End .space -->
                                 <a href="#" class="btn btn-custom-2">CONTINUE SHOPPING</a>
-                                <a href="#" class="btn btn-custom">CHECKOUT</a>
+                                <a asp-area="Customer" asp-action="Summary" asp-controller="Cart" class="btn btn-custom">CHECKOUT</a>
                             </div><!-- End .col-md-4 -->
                         </div><!-- End .row -->
                         <div class="md-margin2x"></div><!-- Space -->
@@ -441,7 +441,7 @@
                                             </a>
                                             <div class="item-action-inner">
                                                 <a href="#" class="icon-button icon-like">Favourite</a>
-                                                <a href="#" class="icon-button icon-compare">Checkout</a>
+                                                <a asp-area="Admin" asp-action="Summary" asp-controller="Cart" class="icon-button icon-compare">Checkout</a>
                                             </div><!-- End .item-action-inner -->
                                         </div><!-- End .item-action -->
                                     </div><!-- End .item-meta-container -->

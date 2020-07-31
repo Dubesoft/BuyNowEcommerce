@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using BuyNowEcommerce.Utility;
+using Microsoft.AspNetCore.Authorization;
+using System.IO;
 
 namespace BuyNowEcommerce.Controllers
 {
@@ -52,7 +54,99 @@ namespace BuyNowEcommerce.Controllers
             return View(IndexVM);
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> UserProfile()
+        {
+
+            //var UserId = HttpContext.Session.GetString(SD.UserId);
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return View("ErrorOccured");
+            }
+            //var userId = await _userManager.FindByIdAsync(user.Id);
+            //var user = await accountService.GetUser(_db, UserId);
+            var model = new User
+            {
+                UserId = user.Id,
+                Username = user.UserName,
+                Name = user.Name,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                StreetAddress = user.StreetAddress,
+                City = user.City,
+                State = user.State,
+                PostalCode = user.PostalCode,
+                Picture = user.Picture,
+                IsActive = true
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> UserProfile(User model)
+        {
+
+            var files = HttpContext.Request.Form.Files;
+
+            if (model == null)
+            {
+                return View("ErrorOccured");
+            }
+            else
+            {
+                if (files.Count > 0)
+                {
+                    byte[] p1 = null;
+                    using (var fs1 = files[0].OpenReadStream())
+                    {
+                        using (var ms1 = new MemoryStream())
+                        {
+                            fs1.CopyTo(ms1);
+                            p1 = ms1.ToArray();
+                        }
+                    }
+                    model.Picture = p1;
+                }
+
+                var user = await _userManager.FindByIdAsync(model.UserId);
+
+                if (user == null)
+                {
+                    ViewBag.ErrorMessage = $"User with Id = {model.UserId} could not be found";
+                    return View("ErrorOccured");
+                }
+
+                user.Id = model.UserId;
+                user.UserName = model.Email;
+                user.Name = model.Name;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
+                user.StreetAddress = model.StreetAddress;
+                user.City = model.City;
+                user.State = model.State;
+                user.PostalCode = model.PostalCode;
+                user.IsActive = true;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(UserProfile));
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+
+            }
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> ServiceDetail(int? id)
@@ -146,6 +240,63 @@ namespace BuyNowEcommerce.Controllers
 
         public IActionResult Privacy()
         {  
+            return View();
+        }
+
+        public async Task<IActionResult> Blog()
+        {
+            var Post = await _db.Post.ToListAsync();
+            return View(Post);
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Service()
+        {
+            var Service = await _db.Services.Include(s => s.Category).ToListAsync();
+            return View(Service);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string value)
+        {
+            if (value == null)
+            {
+                return NotFound();
+            }
+
+            var Category = await _db.Category.Where(c => c.Name == value).FirstOrDefaultAsync();
+
+            if(Category == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _db.Services.Where(s => s.CategoryId == Category.Id).ToListAsync();
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return View("Service", result);
+        }
+
+        public IActionResult Careers()
+        {
+            return View();
+        }
+
+        public IActionResult News()
+        {
             return View();
         }
 

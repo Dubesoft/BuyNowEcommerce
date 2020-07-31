@@ -20,6 +20,10 @@ namespace BuyNowEcommerce.Data
         public DbSet<OrderHeader> OrderHeader { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Coupon> Coupon { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<CommentCount> CommentCount { get; set; }
+        public DbSet<LikeCount> LikeCount { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

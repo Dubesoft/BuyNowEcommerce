@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewData["Title"] = "News";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Venedor - Responsive eCommerce Template</title>
+    <meta name="description" content="Responsive modern ecommerce Html5 Template">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic%7CPT+Gudea:400,700,400italic%7CPT+Oswald:400,700,300' rel='stylesheet' id="googlefont">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/prettyPhoto.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+
+    <!-- Favicon and Apple Icons -->
+    <link rel="icon" type="image/png" href="~/images/icons/icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/images/icons/apple-icon-72x72.png">
+
+    <!--- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <style id="custom-style">
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <partial name="_CustomerHeader" /><!-- End #header -->
+
+        <section id="content">
+            <div id="breadcrumb-container">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Single Portfolio</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="content-title title-bg">
+                            <h1 class="title">News</h1>
+                            <p class="title-desc">Get the Latest News and updates about our services</p>
+                        </header>
+
+                        <div class="row single-portfolio">
+                            <div class="single-portfolio-btn-container">
+                                <a href="#" id="prev-portfolio-project" class="portfolio-btn portfolio-btn-prev"></a><!-- End .portfolio-prev -->
+                                <a id="next-portfolio-project" class="portfolio-btn portfolio-btn-next portfolio-space"></a><!-- End .portfolio-next -->
+                            </div><!--- .single-portfolio-btn-container -->
+
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                <figure>
+                                    <img src="~/images/portfolio/classic/portfolio6.jpg" class="img-responsive" alt="Portfolio item 6">
+                                </figure>
+                            </div><!-- End .col-md-8 -->
+                            <div class="col-md-4 col-sm-5 col-xs-12 portfolio-meta-container">
+                                <p>In euismod massa metus, quis porttitor nisi commodo nec. Praesent vitae auctor sapien. Suspendisse fermentum metus fermentum magna tincidunt convallis. Curabitur eget convallis metus. Duis vitae tortor ut metus rhoncus dignissim non vel est. Donec bibendum justo vel neque ullamcorper ultrices.</p>
+                                <p> Aliquam a turpis aliquam, lacinia lorem in, lobortis augue. Sed semper orci vitae vehicula tincidunt. Ut tempor laoreet ligula consectetur egestas. Ut placerat, lacus eu mollis rhoncus, quam enim fermentum leo, eu consectetur quam lorem vehicula elit.</p>
+
+                                <ul class="portfolio-meta-list">
+                                    <li><span>Date:</span>06/12/2013</li>
+                                    <li><span>Categories:</span><a href="#">Design</a>, <a href="#">Photography</a></li>
+                                    <li><span>Skills:</span>Development</li>
+                                    <li><span><i class="fa fa-heart"></i></span>15</li>
+                                </ul>
+
+                                <div class="share-button-group">
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                                        <a class="addthis_button_facebook"></a>
+                                        <a class="addthis_button_twitter"></a>
+                                        <a class="addthis_button_email"></a>
+                                        <a class="addthis_button_print"></a>
+                                        <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                                    </div>
+                                    <script type="text/javascript">var addthis_config = { "data_track_addressbar": true };</script>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52b2197865ea0183"></script>
+                                    <!-- AddThis Button END -->
+                                </div><!-- End .share-button-group -->
+                            </div><!-- End .col-md-4 -->
+                        </div><!-- End .row -->
+                        <div class="xlg-margin"></div><!-- Space -->
+
+                        <div id="related-portfolio-container" class="carousel-wrapper">
+                            <header class="content-title">
+                                <div class="title-bg">
+                                    <h2 class="title">Recent News</h2>
+                                </div><!-- End .title-bg -->
+                                <p class="title-desc">Look at latest works of our authors.</p>
+                            </header>
+                            <div class="carousel-controls">
+                                <div id="related-slider-prev" class="carousel-btn carousel-btn-prev"></div><!-- End .carousel-prev -->
+                                <div id="related-slider-next" class="carousel-btn carousel-btn-next carousel-space"></div><!-- End .carousel-next -->
+                            </div><!-- End .carousel-controls -->
+                            <div class="row">
+                                <div class="related-portfolio owl-carousel">
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio4.jpg" alt="Portfolio item 4">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio4.jpg" title="Portfolio item 4" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>16</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Photography</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio11.jpg" alt="Portfolio item 11">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio11.jpg" title="Portfolio item 11" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>9</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Design</a>, <a href="#">Wordpress</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio1.jpg" alt="Portfolio item 1">
+                                            <figcaption>
+                                                <a href="http://www.youtube.com/watch?v=vEkwlqsdbyk" title="Portfolio Video Example" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>14</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Video</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio8.jpg" alt="Portfolio item 8">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio8.jpg" title="Portfolio item 8" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>8</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Photography</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio13.jpg" alt="Portfolio item 13">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio13.jpg" title="Portfolio item 13" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>5</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Fashion</a>, <a href="#">Photography</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio14.jpg" alt="Portfolio item 14">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio14.jpg" title="Portfolio item 14" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>12</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Fashion</a>, <a href="#">Video</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio10.jpg" alt="Portfolio item 10">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio10.jpg" title="Portfolio item 10" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>22</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Fashion</a>, <a href="#">Photography</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio3.jpg" alt="Portfolio item 3">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio3.jpg" title="Portfolio item 3" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>18</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Design</a>, <a href="#">Video</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                    <div class="portfolio-item">
+                                        <figure>
+                                            <img src="~/images/portfolio/classic/portfolio2.jpg" alt="Portfolio item 2">
+                                            <figcaption>
+                                                <a href="~/images/portfolio/classic/portfolio2.jpg" title="Portfolio item 2" data-rel="prettyPhoto[portfolio]" class="zoom-button"></a>
+                                                <a href="single-portfolio.html" class="link-button"></a>
+                                                <a href="#" class="like-button"><i class="fa fa-heart"></i><span>12</span></a>
+                                            </figcaption>
+                                        </figure>
+                                        <h2><a href="#">Lorem ipsum dolor</a></h2>
+                                        <p><a href="#">Design</a>, <a href="#">Wordpress</a>, <a href="#">Fashion</a></p>
+                                    </div><!-- End .portfolio-item -->
+                                </div><!-- End .related-portfolio -->
+                            </div><!-- End .row -->
+
+                        </div><!-- End #related-portfolio-container -->
+
+                    </div><!-- End .col-md-12 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </section><!-- End #content -->
+
+        <partial name="_CustomerFooter" /><!-- End #footer -->
+    </div><!-- End #wrapper -->
+    <a href="#" id="scroll-top" title="Scroll to Top"><i class="fa fa-angle-up"></i></a><!-- End #scroll-top -->
+    <!-- END -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/smoothscroll.js"></script>
+    <script src="~/js/retina.min.js"></script>
+    <script src="~/js/jquery.placeholder.js"></script>
+    <script src="~/js/jquery.hoverIntent.min.js"></script>
+    <script src="~/js/twitter/jquery.tweet.min.js"></script>
+    <script src="~/js/jquery.flexslider-min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jflickrfeed.min.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/main.js"></script>
+
+</body>
+</html>
